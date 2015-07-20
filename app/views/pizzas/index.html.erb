@@ -1,44 +1,34 @@
+<div class="jumbotron">
 <div class="container">
 <p id="notice"><%= notice %></p>
 
 
-<h1>Listing Pizzas</h1>
+<h1>List of Pizzas:</h1><%= link_to 'New Pizza', new_pizza_path, :class => 'btn btn-primary' %><br><br>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Doe kind</th>
-      <th>Toppings</th>
-      <th>Pictures:</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
+<div id="pizzas" class="transitions-enabled">
+ 
     <% @pizzas.each do |pizza| %>
-      <tr>
-        <td><%= pizza.name %></td>
-        <td><%= DoeKind.find(pizza.doe_kind_id).name %></td>
-        <td><% pizza.toppings.limit(3).each do |topping| %>
-               <%= topping.name %><br>
+    <ul class="pizzas">
+      <li>
+    <div class="box panel panel-default padd">
+       <h2>Name:<%= pizza.name %></h2><br>
+        Doe kind:<%= DoeKind.find(pizza.doe_kind_id).name %><br>
+        Toppings:<% pizza.toppings.limit(3).each do |topping| %>
+               <%= topping.name %>
             <% end %>
-        </td>
-        <td>
+        <br><br>
          <% pizza.images.limit(1).each do |image| %>
             <%= image_tag image.picture.url if image.picture? %>
             <br>
          <% end %>
-       </td>
-        <td><%= link_to 'Show', pizza, :class => 'btn btn-default btn-xs' %></td>
-        <td><%= link_to 'Edit', edit_pizza_path(pizza), :class => 'btn btn-default btn-xs' %></td>
-        <td><%= link_to 'Destroy', pizza, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %></td>
-      </tr>
+       <br><br>
+        <%= link_to 'Show', pizza, :class => 'btn btn-default btn-xs' %>
+        <%= link_to 'Edit', edit_pizza_path(pizza), :class => 'btn btn-default btn-xs' %>
+        <%= link_to 'Destroy', pizza, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+        <br><br>
+      </div>
+      </li>
     <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Pizza', new_pizza_path, :class => 'btn btn-primary' %>
-</div>
+</div></div>

@@ -14,7 +14,7 @@ class PizzasController < ApplicationController
   def show
     @toppings = @pizza.toppings.all
     @images = @pizza.images.all
-  end
+  end   
 
   # GET /pizzas/new
   def new
@@ -83,6 +83,10 @@ class PizzasController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  
+
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
