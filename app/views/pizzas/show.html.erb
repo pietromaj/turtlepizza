@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="jumbotron">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @pizza.name %>
+</p>
+
+<p>
+  <strong>Doe kind:</strong>
+  <%= DoeKind.find(@pizza.doe_kind_id).name %>
+</p>
+
+<p>
+  <strong>Toppings:</strong>
+  <% @toppings.each do |topping| %>
+   <br><%= topping.name %>
+<% end %>
+</p>
+
+ <strong>Pictures:</strong><br>
+ <% @images.each do |image| %>
+    <%= image_tag image.picture.url if image.picture? %>
+    <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+ <% end %>
+<br>
+
+  <%= form_tag({ :action => 'add_image', :id => params[:id]}, :multipart => true) do %>
+    <%= file_field_tag :picture %>
+    <%= submit_tag 'Upload' %>
+  <% end %>
+
+<%= link_to 'Edit', edit_pizza_path(@pizza) %> |
+<%= link_to 'Back', pizzas_path %>
+</div>
+</div>

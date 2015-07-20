@@ -1,0 +1,39 @@
+<%= form_for(@pizza, html: { multipart: true }) do |f| %>
+  <% if @pizza.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pizza.errors.count, "error") %> prohibited this pizza from being saved:</h2>
+
+      <ul>
+      <% @pizza.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :doe_kind %><br>
+    <%= f.collection_select :doe_kind_id, @doe_kinds.order(:name),:id,:name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :toppings %><br>
+      <span class="ul">
+    <% @topping.each do |topping| %>
+   <label class="li">
+     <%= hidden_field_tag :toppings_ids, false %>
+     <%= check_box_tag :toppings_ids, topping.id, @pizza.toppings.include?(topping), :name => 'pizza[topping_ids][]' %> <u><%= topping.name %></u></label><br />
+  <% end %>
+  </span>
+  </div>
+  <span>
+    <%= f.file_field :picture %>
+  </span>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
