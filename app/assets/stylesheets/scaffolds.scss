@@ -21,24 +21,20 @@ pre {
   font-size: 11px;
 }
 
-
-
-ul.pizzas li {
-    width: 350px;
-    display: inline-block;
+@media only screen and (min-width: 979px) {
+  .pizza {
+     width: 350px;
+     height: 450px;
+     margin: 10px;
+  }
 }
-
-.padd {
-  padding: 25px;
+@media only screen and (max-width: 979px) {
+ .container {
+    width: 100%;
+  }
 }
-
 a {
   color: #000;
-
-  &:visited {
-    color: #666;
-  }
-
   &:hover {
     color: #fff;
     background-color: #000;

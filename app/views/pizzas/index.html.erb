@@ -6,29 +6,32 @@
 <h1>List of Pizzas:</h1><%= link_to 'New Pizza', new_pizza_path, :class => 'btn btn-primary' %><br><br>
 
 
-<div id="pizzas" class="transitions-enabled">
- 
+<div class="row">
+
     <% @pizzas.each do |pizza| %>
-    <ul class="pizzas">
-      <li>
-    <div class="box panel panel-default padd">
-       <h2>Name:<%= pizza.name %></h2><br>
-        Doe kind:<%= DoeKind.find(pizza.doe_kind_id).name %><br>
-        Toppings:<% pizza.toppings.limit(3).each do |topping| %>
-               <%= topping.name %>
-            <% end %>
-        <br><br>
-         <% pizza.images.limit(1).each do |image| %>
-            <%= image_tag image.picture.url if image.picture? %>
-            <br>
-         <% end %>
-       <br><br>
-        <%= link_to 'Show', pizza, :class => 'btn btn-default btn-xs' %>
-        <%= link_to 'Edit', edit_pizza_path(pizza), :class => 'btn btn-default btn-xs' %>
-        <%= link_to 'Destroy', pizza, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
-        <br><br>
+    <div class=" col-xs-12 col-md-6 col-lg-4">
+      <div class="panel panel-default pizza">
+        <div class="panel-heading">
+         <h2>Name:<%= pizza.name %></h2><br>
+        </div>
+        <div class="panel-body">
+          <b>Doe kind:</b><%=  "  "+ DoeKind.find(pizza.doe_kind_id).name %><br>
+          <b>Toppings:</b><% pizza.toppings.limit(3).each do |topping| %>
+                 <%= topping.name %>
+              <% end %>
+          <br><br>
+           <% pizza.images.limit(1).each do |image| %>
+              <%= image_tag image.picture.url if image.picture? %>
+              <br>
+           <% end %>
+         <br><br>
+          <%= link_to 'Show', pizza, :class => 'btn btn-default btn-xs' %>
+          <%= link_to 'Edit', edit_pizza_path(pizza), :class => 'btn btn-default btn-xs' %>
+          <%= link_to 'Destroy', pizza, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-xs btn-danger' %>
+          <br><br>
+        </div>
       </div>
-      </li>
+      </div>
     <% end %>
 
 </div></div>
