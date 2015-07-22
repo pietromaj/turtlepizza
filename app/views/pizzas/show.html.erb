@@ -23,7 +23,7 @@
  <p><strong>Pictures:</strong></p>
    <ul id="sortable" style="cursor: move">
  <% @images.each do |image| %>
-     <li id="<%= image.id %>"> <%= image_tag image.picture.url if image.picture? %>
+     <li id="<%= image.image_relationships.first.id %>"> <%= image_tag image.picture.url if image.picture? %>
     <%= link_to '', image, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'glyphicon glyphicon-remove'  %>
     </li>
  <% end %>

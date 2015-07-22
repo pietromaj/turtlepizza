@@ -13,7 +13,7 @@ class PizzasController < ApplicationController
   # GET /pizzas/1.json
   def show
     @toppings = @pizza.toppings.all
-    @images = @pizza.images.order('image_relationships.position ASC' )
+    @images = @pizza.images.order('image_relationships.position ASC')
   end   
 
   # GET /pizzas/new
@@ -28,7 +28,7 @@ class PizzasController < ApplicationController
   end
   
   def sort
-    ImageRelationship.find(params[:id].to_i-1).insert_at(params[:new_position].to_i+1)
+    ImageRelationship.find(params[:id]).insert_at(params[:new_position].to_i+1)
     render nothing: true
   end
 
