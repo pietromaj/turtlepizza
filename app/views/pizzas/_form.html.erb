@@ -29,6 +29,19 @@
   <% end %>
   </span>
   </div>
+  <strong>Pictures:</strong><br>
+  <% if @images.respond_to? :each  %>
+  <ul id="sortable" style="cursor: move">
+   <% @images.each do |image| %>
+     <li> <%= image_tag image.picture.url if image.picture? %>
+      <%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <br>
+      </li>
+    </ul>
+   <% end %>
+  <% else %>
+  <% end %>
+<br>
   <span>
     <%= f.file_field :picture %>
   </span>
@@ -36,4 +49,3 @@
     <%= f.submit %>
   </div>
 <% end %>
-

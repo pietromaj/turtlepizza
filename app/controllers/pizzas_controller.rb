@@ -13,7 +13,7 @@ class PizzasController < ApplicationController
   # GET /pizzas/1.json
   def show
     @toppings = @pizza.toppings.all
-    @images = @pizza.images.all
+    @images = @pizza.images.order('image_relationships.position ASC' )
   end   
 
   # GET /pizzas/new
@@ -23,15 +23,13 @@ class PizzasController < ApplicationController
     @doe_kinds = DoeKind.all
   end
 
-  def add_image
-    @pizza = Pizza.find(params[:id])
-    Image.create(picture: params[:picture])
-    @pizza.image_relationships.create(image_id: Image.last.id)
-    redirect_to :back
-  end
-
   # GET /pizzas/1/edit
   def edit
+  end
+  
+  def sort
+    ImageRelationship.find(params[:id].to_i-1).insert_at(params[:new_position].to_i+1)
+    render nothing: true
   end
 
   # POST /pizzas
@@ -65,6 +63,9 @@ class PizzasController < ApplicationController
         params[:pizza][:topping_ids].each do |topping|
          @pizza.relationships.create(topping_id: topping)
         end
+        Image.create(picture: params[:pizza][:picture])
+        @pizza.image_relationships.create(image_id: Image.last.id)
+        @pizza.image_relationships.last.move_to_bottom
         format.html { redirect_to @pizza, notice: 'Pizza was successfully updated.' }
         format.json { render :show, status: :ok, location: @pizza }
       else

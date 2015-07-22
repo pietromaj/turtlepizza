@@ -6,6 +6,7 @@
   <strong>Name:</strong>
   <%= @pizza.name %>
 </h3>
+<hr>
 
 <p>
   <strong>Doe kind:</strong>
@@ -18,21 +19,47 @@
   &nbsp<%= topping.name %>
 <% end %>
 </p>
-
+<br>
  <p><strong>Pictures:</strong></p>
+   <ul id="sortable" style="cursor: move">
  <% @images.each do |image| %>
-      <%= image_tag image.picture.url if image.picture? %>
+     <li id="<%= image.id %>"> <%= image_tag image.picture.url if image.picture? %>
     <%= link_to '', image, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'glyphicon glyphicon-remove'  %>
-    <br>
+    </li>
  <% end %>
+ </ul>
 <br>
 
-  <%= form_tag({ :action => 'add_image', :id => params[:id]}, :multipart => true) do %>
-    <%= file_field_tag :picture %>
-    <%= submit_tag 'Upload' %>
-  <% end %>
+  
 <br>
 <%= link_to 'Edit', edit_pizza_path(@pizza) %> |
 <%= link_to 'Back', pizzas_path %>
 </div>
 </div>
+
+<script>
+  $(function() {
+    $( "#sortable" ).sortable({
+       axis: 'y',
+      update: function(event,ui){
+        
+      
+        
+        $.ajax({
+        method: "GET",
+        url: "/sort",
+        data: {  new_position: ui.item.index(), id: ui.item.attr("id")}
+        })
+        
+        
+        
+        
+        
+      }
+      
+    }
+      
+    );
+    $( "#sortable" ).disableSelection();
+  });
+  </script>

@@ -7,6 +7,8 @@ Rails.application.routes.draw do
    post "add_image", :on => :collection
   end
   
+   match '/sort', to: 'pizzas#sort', via: 'get'
+  
   resources :images
    
   # The priority is based upon order of creation: first created -> highest priority.
