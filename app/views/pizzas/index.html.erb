@@ -20,10 +20,10 @@
                  <%= topping.name %>
               <% end %>
           <br><br>
-           <% pizza.images.limit(1).each do |image| %>
-              <%= image_tag image.picture.url if image.picture? %>
+       
+              <%= image_tag pizza.images.order('image_relationships.position ASC').first.picture.url if image_tag pizza.images.order('image_relationships.position ASC').first.picture? %>
               <br>
-           <% end %>
+         
          <br><br>
           <%= link_to 'Show', pizza, :class => 'btn btn-default btn-xs' %>
           <%= link_to 'Edit', edit_pizza_path(pizza), :class => 'btn btn-default btn-xs' %>
