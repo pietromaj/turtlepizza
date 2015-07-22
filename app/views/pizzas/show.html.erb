@@ -26,7 +26,8 @@
      <li id="<%= image.image_relationships.first.id %>"> <%= image_tag image.picture.url if image.picture? %>
     <%= link_to '', image, method: :delete, data: { confirm: 'Are you sure?' }, :class => 'glyphicon glyphicon-remove'  %>
     </li>
- <% end %>
+    <br>
+    <% end %>
  </ul>
 <br>
 
@@ -41,6 +42,7 @@
   $(function() {
     $( "#sortable" ).sortable({
        axis: 'y',
+      placeholder: "ui-sortable-placeholder",
       update: function(event,ui){
         
       

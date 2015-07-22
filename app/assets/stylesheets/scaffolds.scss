@@ -78,6 +78,13 @@ div {
 
   ul li {
     font-size: 12px;
-    list-style: square;
+    list-style: none;
   }
+}
+
+.ui-sortable-placeholder {
+    border: 3px dashed #aaa;
+    height: 250px;
+    width: 250px;
+    background: #ccc;
 }
