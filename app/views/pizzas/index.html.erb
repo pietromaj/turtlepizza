@@ -3,7 +3,7 @@
   <br><br>
 <p id="notice"><%= notice %></p>
 
-<br>
+<br><br><br>
 <div class="title1"><br>"Flavor is everything!"</div>
 <hr class="style-two">
 <br><br>
@@ -18,7 +18,7 @@
     <div class=" col-xs-12 col-md-6 col-lg-4">
       <div class="panel panel-default pizza">
         <div class="panel-heading">
-         <h2><%= pizza.name %></h2><br>
+         <%= pizza.name %><br>
         </div>
         <div class="panel-body">
           <b>Doe kind:</b><%=  "  "+ DoeKind.find(pizza.doe_kind_id).name %><br>

@@ -16,7 +16,7 @@
 
 .navbar .navbar-brand {
     position: relative;
-    top: -20px;
+    top: 35px;
     font-family: Turtle;
     text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
     font-size: 55px;
@@ -26,7 +26,7 @@
 
 .navbar-nav{
   position: relative;
-    top: 20px;
+    top: 35px;
 }
 
 .title1{
@@ -61,9 +61,9 @@ body {
 hr.style-one {
     border: 0;
     height: 3px;
-    background-color: white;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
 }
 
 hr.style-two {
@@ -95,13 +95,14 @@ pre {
 .panel-default > .panel-heading{
   color: #fb0;
   text-align: center;
+  font-size: 30px;
   background-color: rgba(255,0,0,0.1);
 }
 
 @media only screen and (min-width: 979px) {
   .pizza {
      width: 350px;
-     height: 500px;
+     height: 400px;
      margin: 10px;
   }
 }
