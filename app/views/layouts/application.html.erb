@@ -5,24 +5,25 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Turtles Ninja Pizza</a>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Turtles Ninja Pizza</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav right">
+          <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
+          <li><a href="/doe_kinds">Doe Kinds</a></li>
+          <li><a href="/toppings">Toppings</a></li>
+        </ul>
+      </div>
     </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-        <li><a href="/doe_kinds">Doe Kinds</a></li>
-        <li><a href="/toppings">Toppings</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  </nav>
 
 <%= yield %>
 

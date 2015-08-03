@@ -1,8 +1,57 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+@font-face {
+    font-family: Turtle;
+    src: url(/Turtles.ttf);
+}
+
+.navbar{
+  height: 100px;
+  border-radius: 0px;
+  border: 0px;
+  background-color: rgba(120,0,0,0.0);
+}
+
+.navbar .navbar-brand {
+    position: relative;
+    top: 30px;
+    font-family: Turtle;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 55px;
+    color: #1c1;
+    -webkit-transform: rotate(-3deg); /* Chrome, Safari, Opera */
+}
+
+.navbar-nav{
+  position: relative;
+    top: 20px;
+}
+
+.title1{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  background: -webkit-linear-gradient(#fc0, #f70);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  height: 100px;
+}
+
+
+.title{
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  Color: white;
+}
+
 body {
-  background-color: #fff;
+  background: linear-gradient(#d00, #700, #600);
+  background-repeat: no-repeat;
+   height: 100%;
+  margin: 0;
+  background-attachment: fixed;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -21,10 +70,24 @@ pre {
   font-size: 11px;
 }
 
+.panel {
+  font-family: 'Lobster', cursive;
+  color: #eee;
+  box-shadow: 0px 2px 1px #f90;
+  border: 1px solid #f90;
+  background: linear-gradient(rgba(255,0,0,0),rgba(255,123,0,0.2));
+}
+
+.panel-default > .panel-heading{
+  color: #fb0;
+  text-align: center;
+  background-color: rgba(255,0,0,0.1);
+}
+
 @media only screen and (min-width: 979px) {
   .pizza {
      width: 350px;
-     height: 450px;
+     height: 500px;
      margin: 10px;
   }
 }
@@ -83,8 +146,25 @@ div {
 }
 
 .ui-sortable-placeholder {
-    border: 3px dashed #aaa;
+    border: 2px dashed #0d0;
+    border-radius: 10px;
     height: 250px;
     width: 250px;
-    background: #ccc;
+    background: #8e8;
+}
+
+.right{
+  float: right;
+}
+.left{
+  float: left;
+}
+
+.navbar-inverse .navbar-nav > li > a{
+  color: #fff;
+}
+
+.newpizza{
+  background-color: transparent;
+  border: 2px solid #fff;
 }
